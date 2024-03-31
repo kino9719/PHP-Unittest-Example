@@ -3,6 +3,7 @@
 namespace Demo\PhpUnittestExample\Tests;
 
 use Demo\PhpUnittestExample\Tool;
+use Exception;
 use PHPUnit\Framework\TestCase;
 
 class ToolTest extends TestCase
@@ -26,5 +27,13 @@ class ToolTest extends TestCase
     public function testGetEnv()
     {
         $this->assertEquals('testing', getenv('APP_ENV'));
+    }
+
+    public function testThrowException()
+    {
+        $this->expectException(Exception::class);
+
+        $tool = new Tool();
+        $tool->throwException();
     }
 }

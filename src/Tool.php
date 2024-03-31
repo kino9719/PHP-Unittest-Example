@@ -8,4 +8,9 @@ class Tool
     {
         return $a + $b;
     }
+
+    function throwException()
+    {
+        throw new \Exception('This is an exception');
+    }
 }
