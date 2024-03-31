@@ -1,0 +1,9 @@
+{
+    "name": "demo/php-unittest-example",
+    "autoload": {
+        "psr-4": {
+            "Demo\\PhpUnittestExample\\": "src/"
+        }
+    },
+    "require": {}
+}
