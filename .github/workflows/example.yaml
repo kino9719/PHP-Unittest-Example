@@ -3,9 +3,19 @@ name: Run PHP Code
 on: [push]
 
 jobs:
+  run-syntax-check:
+    runs-on: ubuntu-latest
+    container: php:8.3-fpm
+    steps:
+        - uses: actions/checkout@v3
+        - name: 執行語法檢查
+          run: |
+            find ./src -name '*.php' -print0 | xargs -0 -n1 php -l
+            find ./tests -name '*.php' -print0 | xargs -0 -n1 php -l
   run-tests:
     runs-on: ubuntu-latest
     container: php:8.3-fpm
+    needs: run-syntax-check
     steps:
         - name: 安裝依賴
           run: |
@@ -51,12 +61,3 @@ jobs:
           with:
             name: code-coverage-report
             path: html-coverage
-  run-syntax-check:
-    runs-on: ubuntu-latest
-    container: php:8.3-fpm
-    steps:
-        - uses: actions/checkout@v3
-        - name: 執行語法檢查
-          run: |
-            find ./src -name '*.php' -print0 | xargs -0 -n1 php -l
-            find ./tests -name '*.php' -print0 | xargs -0 -n1 php -l
