@@ -11,7 +11,7 @@
 
   <coverage>
     <report>
-      <html outputDirectory="html-coverage" lowUpperBound="50" highLowerBound="90"/>
+       <html outputDirectory="html-coverage" lowUpperBound="50" highLowerBound="90"/>
     </report>
   </coverage>
 

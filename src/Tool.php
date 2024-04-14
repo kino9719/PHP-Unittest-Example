@@ -13,4 +13,12 @@ class Tool
     {
         throw new \Exception('This is an exception');
     }
+
+    function createInvoice($data)
+    {
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request('POST', 'https://api.example.com/invoice', $data);
+
+        return $res;
+    }
 }

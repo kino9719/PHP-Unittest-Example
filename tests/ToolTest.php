@@ -4,6 +4,8 @@ namespace Demo\PhpUnittestExample\Tests;
 
 use Demo\PhpUnittestExample\Tool;
 use Exception;
+use Mockery;
+use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
 
 class ToolTest extends TestCase
@@ -35,5 +37,18 @@ class ToolTest extends TestCase
 
         $tool = new Tool();
         $tool->throwException();
+    }
+
+    public function testMockery()
+    {
+        $double = Mockery::mock(Tool::class, function (MockInterface $mock) {
+            $mock->shouldReceive('add')
+                ->once()
+                ->with(2, 3)
+                ->andReturn(200);
+        });
+
+        $result = $double->add(2, 3);
+        $this->assertEquals(200, $result);
     }
 }
