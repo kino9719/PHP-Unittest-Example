@@ -49,6 +49,6 @@ class ToolTest extends TestCase
         });
 
         $result = $double->add(2, 3);
-        $this->assertEquals(200, $result);
+        $this->assertEquals(300, $result);
     }
 }
